@@ -1,0 +1,44 @@
+Q1.
+a. Yo
+b. What's up?
+c. Foobar
+d. error
+e. error
+f. error
+g. error
+Q2a.
+a. We needed to get rid of app.get to index.html as it was forcing the index.html to be on ./index.html
+b. The type needed to be "text/css" and express needed to be enabled.
+Q2b.
+a. CSS was enabled and we are able to get access to ./ without error
+b. It could not establish connection
+3a. let count = 1;
+app.get("/count", (req, res) => {
+  count++;
+  res.send(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <p>This URL has been visited ${count} times.</p>
+</body>
+</html>`);
+});
+3b.
+3c. Static website appears the same for everyone while dynamic sites appear differently based on the user
+4.
+test = curl -X POST -H "Content-Type: application/json" -d "{\"fizzy\":1}" http://localhost:3000/bubbles
+app.post("/bubbles", (req, res) => {
+  const { fizzy } = req.body;
+
+  if (typeof fizzy !== 'undefined') {
+    const response = `${fizzy}abc`;
+    res.send(response);
+  } else {
+    res.send("Where is fizzy?");
+  }
+});

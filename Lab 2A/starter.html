@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Starter</title>
+	<style type="text/css">
+		/* TODO */
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			border: 1px solid black;
+			padding: 5px;
+		}
+	</style>
+	</head>
+<body>
+	<div id="count-container">0</div>
+	<button id="start">Start</button>
+	<button id="stop">Stop</button>
+
+	<table>
+		<tbody id="number-grid"></tbody>
+	</table>
+
+	<button id="increment">Increment</button>
+
+	<script type="text/javascript">
+		let numberGrid = [[1, 2, 3], [4, 5, 6]];
+
+		function incrementGrid() {
+			// don't modify this function
+			for (let i = 0; i < numberGrid.length; i++) {
+				for (let j = 0; j < numberGrid[0].length; j++) {
+					numberGrid[i][j]++;
+				}
+			}
+		}
+
+		// TODO
+
+		let called = false;
+		let count = document.getElementById("count-container").textContent;
+		let startButton = document.getElementById("start");
+		let stopButton = document.getElementById("stop");
+		if (!called){
+			called = true;
+			startButton.addEventListener("click", () => {
+				intervalID = setInterval(() => {
+				count++;
+				document.getElementById("count-container").textContent = count;
+				}, 500);
+			});
+		}
+
+		stopButton.addEventListener("click", () => {
+			clearInterval(intervalID);
+			called = false;
+		})
+		
+		function createTable() {
+			let row = 0;
+			let column = 0;
+			let tblebody = document.getElementById("number-grid");
+			numberGrid.forEach(() => {
+				document.createElement('tr');
+				console.log(numberGrid[row]);
+				
+				numberGrid[row].forEach(() => {
+					console.log(numberGrid[row][column].textContent);
+					document.createElement('td');
+					column++;
+				});
+				row++;
+			});
+		}
+
+
+	</script>
+</body>
+</html>

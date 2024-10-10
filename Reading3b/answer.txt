@@ -1,0 +1,41 @@
+Q1.
+Console Log Prints (In order)
+(Combined answer of a, b, c)
+"Page Loaded" (Browser)
+"Request Sent" (Browser)
+"Body: {secret: 'applesauce'}" (Server)
+Status: 200 (Browser)
+Body: Data received (Browser)
+
+Q2.
+Fetch call fails with a network error due to CORS policy
+
+Q3.
+app.post("/rate", (req, res) => {
+    if (!req.body.recipe || !Array.isArray(req.body.recipe)) {
+        //should I do console log with the error or is this okay. I looked up how to combine them so not sure if its usable
+        return res.status(400).json({});
+    }
+    const tooManyIngredients = req.body.recipe.length >= 3;
+    res.json({ tooManyIngredients });
+});
+
+Q4.
+<script>
+  document.getElementById("clicker").addEventListener("click", () => {
+    fetch("/data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: "Hello world" })
+    })
+    .then(response => response.text())
+    .then(body => {
+      console.log("Response from server:", body);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+  });
+</script>

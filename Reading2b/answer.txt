@@ -1,0 +1,25 @@
+Q1. protocol: https
+    domain: catalog.drexel.edu
+    route: undergraduate/collegeofcomputingandinformatics/computerscience
+    port: 443
+
+Q2. 
+a. The get method is used to request data. It gets the information from the server without modifying it.
+b. The route requested /fo/bar and will probably get a file like bar.html
+c. The user agent header includes information about the software such as browser version and operating system.
+d. The accept language header specifies the preferred languages for the response.
+e. This request does not have body because get method does not have a request body.
+
+Q3.
+a. The response status code is 200 OK and it means the request has been successfully processed.
+b. The content type is text/plain which means that the response will be returned in plain text
+
+Q4. The site is composed of multiple components each requiring seperate request to render efficiently
+
+Q5. 
+a. The response from the browser is more structured over the browser.
+b. I did not find any difference. However, it is said that browser requests are more complex and curl is much simpler.
+
+Q6. I am assuming that google has more complex cookie management and cache management over the static server.js
+
+Q7. The content of curl is the same other than change on the content type. As for the browser, the html was added rather than written as plain text.
