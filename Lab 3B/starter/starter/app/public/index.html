@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Demo</title>
+</head>
+<body>
+
+<h1>Random integers in range</h1>
+
+<div>
+  <label for="min">Min:</label>
+  <input id="min" name="min" type="number" />
+</div>
+<div>
+  <label for="max">Max:</label>
+  <input id="max" name="max" type="number" />
+</div>
+
+<button id="send" onclick="getRandonNum()">Get random integer</button>
+
+<div id="container"></div>
+
+<script>
+let minInput = document.getElementById("min");
+let maxInput = document.getElementById("max");
+console.log("Max input entered:", maxInput.value);
+
+function getRandonNum(){
+  fetch(`/random?min=${minInput.value}&max=${maxInput.value}`).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log("Received body:", data);
+    if(data.number > 15){
+      container.innerHTML += `<p style="color: blue">${data.number}</p>`
+    } else {
+      container.innerHTML += `<p>${data.number}</p>`;
+    }
+  }).catch(error => {
+    console.log(error);
+  });
+}
+
+</script>
+
+</body>
+</html>

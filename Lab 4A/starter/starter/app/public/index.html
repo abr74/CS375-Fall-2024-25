@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Feels Like</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 50%; 
+            margin-top: 20px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: center; 
+        }
+        th { 
+            background-color: #f2f2f2; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Get Feels Like Temperature</h1>
+    <input type="text" id="zip" placeholder="Enter Zip Code" required>
+    <button id="getWeather">Get Feels Like</button>
+    
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Zip Code</th>
+                <th>Feels Like (°F)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- WIll be aadded here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById("getWeather").addEventListener("click", function() {
+            const zip = document.getElementById("zip").value;
+
+            // Check if the zip code input is empty
+            if (!zip) {
+                alert("Please enter a zip code.");
+                return;
+            }
+
+            fetch(`/feels-like?zip=${zip}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${data.zip}</td><td>${data["feels-like-fahrenheit"].toFixed(2)}</td>`;
+                    document.querySelector("#resultsTable tbody").appendChild(row);
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    alert("Could not retrieve data. Please check the zip code and try again.");
+                });
+        });
+    </script>
+</body>
+</html>

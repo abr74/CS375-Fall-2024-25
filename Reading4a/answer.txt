@@ -1,0 +1,102 @@
+Q1.
+{
+  "coord": {
+    "lon": -75.2955,
+    "lat": 40.2378
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 293.35,
+    "feels_like": 293.07,
+    "temp_min": 292.17,
+    "temp_max": 294.62,
+    "pressure": 1005,
+    "humidity": 63,
+    "sea_level": 1005,
+    "grnd_level": 993
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 2.57,
+    "deg": 180
+  },
+  "clouds": {
+    "all": 0
+  },
+  "dt": 1728869475,
+  "sys": {
+    "type": 2,
+    "id": 2080132,
+    "country": "US",
+    "sunrise": 1728817803,
+    "sunset": 1728858252
+  },
+  "timezone": -14400,
+  "id": 0,
+  "name": "Lansdale",
+  "cod": 200
+}
+
+Q2. 
+a. most APIs require an API key for authentication, rate limiting, usage tracking, and access control
+b. If you make a requestion with an invalid API key, it will return an error with 401 Unauthorized
+c. We store it in separate file instead of hardcoing them in the server code for security, configuaration management and enviroment isolation
+d. Some of the advantage are security, cors issues , data processing and consistency.
+
+Q3.
+1.
+    Trigger: When the server gets a request at /data endpoint
+    Order: It will print first after the client clicks the submit button
+    Location: Server terminal
+2.
+    Trigger: When the API responds successfully
+    Order: It will print after the API responses
+    Location: Server terminal
+3.
+    Trigger: If there is an error with API request
+    Order: It will print after the API response fail
+    Location: Server terminal
+4.
+    Trigger: After the request is sent to the API
+    Order:  It will print when the API is request is sent
+    Location: Server terminal
+5.
+    Trigger: When server starts and listens to requests
+    Order: It is printed when the server starts
+    Location: Server terminal
+6.
+    Trigger: When browser receives a response from the server
+    Order: It will print after the client-side fetch request completes
+    Location: Browser console
+7.
+    Trigger: When the response body is converted to JSON
+    Order: It will print after the response headers been logged and body is parsed
+    Location: Browser console
+8.
+    Trigger: After the JSON response is logged on console
+    Order: It will print after the previous log
+    Location: Browser console
+9.
+    Trigger: If there is an error during fetch request
+    Order: It will print if there is an error with the fetch request
+    Location: Browser console
+10.
+    Trigger: After the fetch request is initiated on the client side
+    Order: It will print after the button click event is triggered
+    Location: Browser console
+
+The client passes the zip code to the server through the URL in the fetch request
+
+It uses Axios to send a request to the URL with zip code and API key
+
+We use res.json() to send the API's response to the client because it sets the correct headers
+
+We will get an empty object to the client because axios request did not wait for response
